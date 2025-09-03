@@ -1,0 +1,16 @@
+@url=http://localhost:3000
+
+### POST - para crear un alumno
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Adriel Barrios",
+    "notas": [6, 9, 7]
+}
+
+### GET - para obtener el listado de alumnos
+GET {{url}}/alumnos
+
+### GET - para obtener un solo alumno (colocar %20 entre nombre y apellido del alumno)
+GET {{url}}/alumnos/Adriel%20Barrios
