@@ -4,7 +4,8 @@
   "description": "Realizar una API con ExpressJS que permita calcular perímetros y superficies\r de rectángulos. Guardar los cálculos en un arreglo interno. En el momento de\r consultar por los cálculos indicar también si se trata de un rectángulo o\r cuadrado, no guardar este dato en el arreglo interno.",
   "main": "ejercicio1.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch ejercicio1.js"
   },
   "keywords": [],
   "author": "",

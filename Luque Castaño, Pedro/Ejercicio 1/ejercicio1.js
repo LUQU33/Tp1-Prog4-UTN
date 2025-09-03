@@ -2,28 +2,24 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const calculos = []  // Array para guardar los cálculos
+// Array para guardar los cálculos
+const calculos = []
+
+// Middleware
+app.use(express.json())
 
 // POST para calculos de perímetro y superficie
 app.post('/calcular', (req, res) => {
-  let body = '';
+  const { base, altura } = req.body;
 
-  req.on('data', chunk => {
-    body += chunk.toString();
-  })
+  // Cálculos
+  const perimetro = 2 * (base + altura);
+  const superficie = base * altura;
 
-  req.on('end', () => {
-    const { base, altura } = JSON.parse(body);
+  // Guardar en el array
+  calculos.push({ base, altura, perimetro, superficie });
 
-    // Cálculos
-    const perimetro = 2 * (base + altura);
-    const superficie = base * altura;
-
-    // Guardar en el array
-    calculos.push({ base, altura, perimetro, superficie });
-
-    res.json({mensaje: "Datos recibidos y cálculos realizados con éxito"});
-  })
+  res.json({mensaje: "Datos recibidos y cálculos realizados con éxito"});
 
 })
 
