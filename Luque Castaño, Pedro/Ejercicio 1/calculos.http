@@ -1,0 +1,13 @@
+@url=http://localhost:3000
+
+### POST para calcular perímetro y superficie del rectángulo
+POST {{url}}/calcular
+Content-Type: application/json
+
+{
+  "base": 5,
+  "altura": 5
+}
+
+### GET para obtener los datos de los cálculos realizados
+GET {{url}}/datos
