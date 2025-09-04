@@ -5,8 +5,8 @@ POST {{url}}/calcular
 Content-Type: application/json
 
 {
-  "base": 20,
-  "altura": 20
+  "base": 10,
+  "altura": "10"
 }
 
 ### GET para obtener los datos de los cálculos realizados

@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 const port = 3000;
 
@@ -12,12 +12,22 @@ app.use(express.json())
 app.post('/calcular', (req, res) => {
   const { base, altura } = req.body;
 
+  // Validacion con regex
+  const regex = /^\d+(\.\d+)?$/
+
+  if (!regex.test(base) || !regex.test(altura)) {
+    return res.status(400).json({error: "Solo se aceptan valores numéricos positivos"})
+  }
+
+  const baseNum = Number(base);
+  const alturaNum = Number(altura);
+
   // Cálculos
-  const perimetro = 2 * (base + altura);
-  const superficie = base * altura;
+  const perimetro = 2 * (baseNum + alturaNum);
+  const superficie = baseNum * alturaNum;
 
   // Guardar en el array
-  calculos.push({ base, altura, perimetro, superficie });
+  calculos.push({ base: baseNum, altura: alturaNum, perimetro, superficie });
 
   res.json({mensaje: "Datos recibidos y cálculos realizados con éxito"});
 
