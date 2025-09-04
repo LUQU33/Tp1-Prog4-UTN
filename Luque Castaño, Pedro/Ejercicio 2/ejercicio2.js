@@ -18,6 +18,11 @@ function estadoAlumno(promedio){
         }
 }
 
+function calcularPromedio(array){
+    const total = array.reduce((acc, n) => acc + n, 0);
+    return (total / array.length).toFixed(2);
+}
+
 // POST - Crear un nuevo alumno
 app.post('/alumnos', (req, res) => {
     const { nombre, notas } = req.body;
@@ -54,7 +59,7 @@ app.post('/alumnos', (req, res) => {
 // GET - Obtener listado de todos los alumnos
 app.get('/alumnos', (req, res) => {
     const resultado = alumnos.map(alumno => {
-        const promedio = ((alumno.notas[0] + alumno.notas[1] + alumno.notas[2]) / 3).toFixed(2);
+        const promedio = calcularPromedio(alumno.notas);
 
         let estado = estadoAlumno(promedio);
 
@@ -70,15 +75,15 @@ app.get('/alumnos/:nombre', (req, res) => {
 
     if (!alumnoEncontrado) {
         return res.status(404).json({error: "Alumno no encontrado"})
-    } else {
-        const promedio = ((alumnoEncontrado.notas[0] + alumnoEncontrado.notas[1] + alumnoEncontrado.notas[2]) / 3).toFixed(2);
-
-        let estado = estadoAlumno(promedio);
-
-        const resultado = {...alumnoEncontrado, promedio, estado}
-        
-        res.json(resultado)
     }
+
+    const promedio = calcularPromedio(alumnoEncontrado.notas);
+
+    let estado = estadoAlumno(promedio);
+
+    const resultado = {...alumnoEncontrado, promedio, estado}
+        
+    res.json(resultado)
 });
 
 app.listen(port, () => {
