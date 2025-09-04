@@ -5,12 +5,12 @@ POST {{url}}/alumnos
 Content-Type: application/json
 
 {
-    "nombre": "Adriel Barrios",
-    "notas": [6, 9, 7]
+    "nombre": "Nicolas Vazquez",
+    "notas": [8, 7.5, 9]
 }
 
 ### GET - para obtener el listado de alumnos
 GET {{url}}/alumnos
 
 ### GET - para obtener un solo alumno (colocar %20 entre nombre y apellido del alumno)
-GET {{url}}/alumnos/Adriel%20Barrios
+GET {{url}}/alumnos/Nicolas%20Vazquez
