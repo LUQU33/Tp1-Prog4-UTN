@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
   "base": 10,
-  "altura": "10"
+  "altura": 5
 }
 
 ### GET para obtener los datos de los cálculos realizados

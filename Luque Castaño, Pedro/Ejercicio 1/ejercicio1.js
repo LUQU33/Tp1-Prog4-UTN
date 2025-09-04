@@ -11,9 +11,14 @@ app.use(express.json())
 // POST para calculos de perímetro y superficie
 app.post('/calcular', (req, res) => {
   const { base, altura } = req.body;
+  const keys = Object.keys(req.body)
 
-  // Validacion con regex
-  const regex = /^\d+(\.\d+)?$/
+  // Validaciones
+  if (!(keys.length === 2 && keys.includes("base") && keys.includes("altura"))){
+    return res.status(400).json({error: "El JSON debe contener únicamente 'base' y 'altura'"})
+  };
+
+  const regex = /^\d+(\.\d+)?$/;
 
   if (!regex.test(base) || !regex.test(altura)) {
     return res.status(400).json({error: "Solo se aceptan valores numéricos positivos"})
