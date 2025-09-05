@@ -5,12 +5,12 @@ POST {{url}}/creartarea
 Content-Type: application/json
 
 {
-    "nombre": "tarea5",
-    "estado": "incompleta"
+    "nombre": "tarea1",
+    "estado": "completa"
 }
 
 ### GET para ver todas las tareas
 GET {{url}}/tareas
 
 ### GET para ver tarea segun estado (completa / incompleta)
-GET {{url}}/tareas/incompleta
+GET {{url}}/tareas/completa

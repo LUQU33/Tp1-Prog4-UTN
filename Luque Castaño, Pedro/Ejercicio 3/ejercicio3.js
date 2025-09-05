@@ -1,4 +1,4 @@
-import express from 'express';
+import express from 'express'; 
 const app = express();
 const port = 3000;
 
@@ -12,6 +12,15 @@ app.use(express.json());
 app.post('/creartarea', (req, res) => {
     const { nombre, estado } = req.body;
 
+    // Validamos el JSON
+    const keys = Object.keys(req.body);
+    if (!(keys.length === 2 && keys.includes('nombre') && keys.includes('estado'))){
+        return res.status(400).json({error: "El JSON debe contener única y exclusivamente 'nombre' y 'estado' "});
+    }
+    if (typeof(nombre)!=="string" || typeof(estado)!=="string" || nombre.trim() === "" || estado.trim() === ""){
+        return res.status(400).json({error: "Tanto 'nombre' como 'estado' deben ser strings y no pueden estar vacíos"});
+    }
+
     // Verificamos si la tarea ya existe
     if (tareas.find(tarea => tarea.nombre === nombre)) {
         return res.status(400).json({error: 'La tarea ya existe, intente nuevamente'});
@@ -19,7 +28,7 @@ app.post('/creartarea', (req, res) => {
     
     // Si no existe la agregamos al array y mostramos un mensaje exitoso
     tareas.push({nombre, estado});
-    res.status(201).json({message : "Tarea cargada con éxito"});
+    res.status(201).json({message : 'Tarea cargada con éxito'});
 })
 
 // GET para ver todas las tareas
