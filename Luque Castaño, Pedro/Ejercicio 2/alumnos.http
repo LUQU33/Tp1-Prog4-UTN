@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
     "nombre": "Nicolas Vazquez",
-    "notas": [8, 7.5, 9]
+    "notas": [5, 7.5, 3]
 }
 
 ### GET - para obtener el listado de alumnos
