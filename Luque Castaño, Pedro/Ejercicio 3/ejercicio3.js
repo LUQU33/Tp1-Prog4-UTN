@@ -9,7 +9,7 @@ const tareas = [];
 app.use(express.json());
 
 // POST para crear una tarea nueva
-app.post('/creartarea', (req, res) => {
+app.post('/tareas', (req, res) => {
     const { nombre, estado } = req.body;
 
     // Validamos el JSON

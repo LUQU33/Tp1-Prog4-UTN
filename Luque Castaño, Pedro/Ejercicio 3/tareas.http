@@ -1,7 +1,7 @@
 @url=http://localhost:3000
 
 ### POST para crear una tarea nueva
-POST {{url}}/creartarea
+POST {{url}}/tareas
 Content-Type: application/json
 
 {
