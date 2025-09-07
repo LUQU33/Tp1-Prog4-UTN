@@ -9,7 +9,7 @@ const calculos = []
 app.use(express.json())
 
 // POST para calculos de perímetro y superficie
-app.post('/calcular', (req, res) => {
+app.post('/calculos', (req, res) => {
   const { base, altura } = req.body;
   const keys = Object.keys(req.body)
 
@@ -39,7 +39,7 @@ app.post('/calcular', (req, res) => {
 })
 
 // GET para obtener los datos de los cálculos realizados
-app.get('/datos', (req, res) => {
+app.get('/calculos', (req, res) => {
   const resultado = calculos.map( e => (
     {
       ...e,
